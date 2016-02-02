@@ -1,0 +1,31 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <iostream>
+#include <stdio.h>
+
+using namespace std;
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_checkBox_toggled(bool checked)
+{
+    if (checked) {
+       system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+        cout << "Checked." << endl;
+    }
+    else {
+       system("echo -n 0 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+        cout << "Unchecked." << endl;
+    }
+
+}
