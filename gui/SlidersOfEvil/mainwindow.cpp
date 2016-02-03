@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <stdio.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -23,4 +24,9 @@ void MainWindow::on_checkBox_toggled(bool checked) {
     system("echo -n 0 > /sys/module/tcp_evil/parameters/tcp_friendliness");
   }
   system("cat /sys/module/tcp_evil/parameters/tcp_friendliness");
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    exit(EXIT_SUCCESS);
 }
