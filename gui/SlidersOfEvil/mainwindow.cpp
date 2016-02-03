@@ -19,13 +19,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_checkBox_toggled(bool checked)
 {
-    if (checked) {
-       system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
-        cout << "Checked." << endl;
-    }
-    else {
-       system("echo -n 0 > /sys/module/tcp_evil/parameters/tcp_friendliness");
-        cout << "Unchecked." << endl;
-    }
-
+  if (checked) {
+    system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+  }
+  else {
+    system("echo -n 0 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+  }
+  cout << "TCP Friendliness: ";
+  system("cat /sys/module/tcp_evil/parameters/tcp_friendliness");
 }
