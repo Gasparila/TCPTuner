@@ -88,7 +88,7 @@ struct bictcp {
   u32 loss_cwnd;                 /* congestion window at last loss */
   u32 last_cwnd;                 /* the last snd_cwnd */
   u32 last_time;                 /* time when updated last_cwnd */
-  u32 bic_origin_point;           /* origin point of bic function */
+  u32 bic_origin_point;          /* origin point of bic function */
   u32 bic_K;                     /* time to origin point
                                     from the beginning of the current epoch */
   u32 delay_min;                 /* min delay (msec << 3) */
@@ -104,6 +104,10 @@ struct bictcp {
   u32 curr_rtt;                  /* the minimum rtt of current round */
 };
 
+/**
+ * Resets the BIC TCP Parameters to zero for the given bictcp struct.
+ * @param ca The BIC TCP struct to reset.
+ */
 static inline void bictcp_reset(struct bictcp* ca) {
   ca->cnt = 0;
   ca->last_max_cwnd = 0;
@@ -510,4 +514,4 @@ module_exit(cubictcp_unregister);
 MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("EVIL TCP");
-MODULE_VERSION("2.3");
+MODULE_VERSION("0.9");
