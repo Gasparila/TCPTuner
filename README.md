@@ -40,3 +40,21 @@ hystart_detect     | hybrid slow start detection mechanisms 1: packet-train 2: d
 hystart_low_window | lower bound cwnd for hybrid slow start                                                         | 16
 initial_ssthresh   | initial value of slow start threshold                                                          | 0
 tcp_friendliness   | turn on/off tcp friendliness                                                                   | 1
+
+### Additonal Parameters from ip-route
+
+Parameter  | Description                                                                                                                           | Default
+:--------: | :------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------:
+mtu        | maximum transmission unit                                                                                                             | ?
+advmss     | the Maximal Segment Size to advertise to destinations when establishing TCP connections                                               | Calculated from first hop device MTU.
+rtt        | the initial RTT estimate                                                                                                              | ?
+rttvar     | initial RTT variance estimate                                                                                                         | ?
+reordering | maximal reordering on the path to this destination                                                                                    | Linux uses the value selected with sysctl variable net/ipv4/tcp_reordering
+window     | the maximal window for TCP to advertise in bytes. This limits maximal data burst that TCP peers are allowed to send to us.            | ?
+cwnd       | the clamp for congestion window. Ignored if the lock flag is not used.                                                                | ?
+ssthresh   | an estimate for the intial slow start threshold                                                                                       | ?
+realms     | todo                                                                                                                                  | ?
+rto_min    | the minimum TCP retransmission timeout to use when communicating with this destination.                                               | ?
+initcwnd   | the initial congestion window size for connections to this destination. Actual window size is this value multiplied by MSS.           | 0
+initrwnd   | inital receive window size for connections to this destination. Actual window size is this value multiplied by MSS of the connection. | 0
+quickack   | Enable or disable quick ack for connections to this destination                                                                       | ?
