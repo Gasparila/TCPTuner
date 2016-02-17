@@ -26,6 +26,13 @@ make
 sudo ./SlidersOfEvil
 ```
 
+## MahiMahi Simulation Environment
+### To Run
+```
+cd mahimahi
+sudo sysctl -w net.ipv4.ip_forward=1
+```
+
 ## TCPvil's Parameters
 TCPvil exposes the parameters of TCP CUBIC to the user via the Sliders of Evil. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
 
