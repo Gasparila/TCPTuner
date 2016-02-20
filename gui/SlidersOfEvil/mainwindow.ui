@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>562</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -34,7 +34,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <spacer name="verticalSpacer">
+        <spacer name="verticalSpacer_10">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -49,6 +49,109 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
+          <widget class="QCheckBox" name="chk_use_alpha">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>use_alpha:</string>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_alpha_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_alpha">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="sliderPosition">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_alpha_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="alpha_value">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>200</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>9</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_beta">
+         <item>
           <widget class="QLabel" name="label_beta">
            <property name="minimumSize">
             <size>
@@ -62,7 +165,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta">
+          <spacer name="spacer_beta_l">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -100,7 +203,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_2">
+          <spacer name="spacer_beta_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -144,7 +247,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="laout_fast_convergence">
+        <layout class="QHBoxLayout" name="layout_fast_convergence">
          <item>
           <spacer name="spacer_fast_l">
            <property name="orientation">
@@ -262,7 +365,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="layout_hystartackdelta">
          <item>
           <widget class="QLabel" name="label_ack_delta">
            <property name="minimumSize">
@@ -315,7 +418,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_3">
+          <spacer name="spaceer_ack_delta_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -331,7 +434,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_2">
+          <widget class="QSpinBox" name="hystartackdelta_value">
            <property name="minimum">
             <number>1</number>
            </property>
@@ -438,7 +541,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="layout_low_window">
          <item>
           <widget class="QLabel" name="label_low_window">
            <property name="minimumSize">
@@ -491,7 +594,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_4">
+          <spacer name="spacer_low_window_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -507,7 +610,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_3">
+          <widget class="QSpinBox" name="low_window_value">
            <property name="minimum">
             <number>1</number>
            </property>
@@ -535,7 +638,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="layout_initial_ssthresh">
          <item>
           <widget class="QLabel" name="label_ssthresh">
            <property name="minimumSize">
@@ -588,7 +691,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_5">
+          <spacer name="spacer_ssthresh_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -604,7 +707,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_4">
+          <widget class="QSpinBox" name="ssthresh_value">
            <property name="minimum">
             <number>0</number>
            </property>
@@ -757,12 +860,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>407</x>
-     <y>76</y>
+     <x>473</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>325</x>
-     <y>77</y>
+     <x>372</x>
+     <y>143</y>
     </hint>
    </hints>
   </connection>
@@ -773,108 +876,140 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>343</x>
-     <y>77</y>
+     <x>372</x>
+     <y>143</y>
     </hint>
     <hint type="destinationlabel">
-     <x>444</x>
-     <y>76</y>
+     <x>473</x>
+     <y>142</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_2</sender>
+   <sender>hystartackdelta_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_ack_delta</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>464</x>
-     <y>219</y>
+     <x>461</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
-     <x>393</x>
-     <y>221</y>
+     <x>372</x>
+     <y>283</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_ack_delta</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_2</receiver>
+   <receiver>hystartackdelta_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>396</x>
-     <y>231</y>
+     <x>372</x>
+     <y>283</y>
     </hint>
     <hint type="destinationlabel">
-     <x>460</x>
-     <y>230</y>
+     <x>461</x>
+     <y>282</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_3</sender>
+   <sender>low_window_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_low_window</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>347</y>
+     <x>467</x>
+     <y>382</y>
     </hint>
     <hint type="destinationlabel">
-     <x>418</x>
-     <y>345</y>
+     <x>372</x>
+     <y>383</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_low_window</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_3</receiver>
+   <receiver>low_window_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
-     <y>356</y>
+     <x>372</x>
+     <y>383</y>
     </hint>
     <hint type="destinationlabel">
-     <x>483</x>
-     <y>356</y>
+     <x>467</x>
+     <y>382</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_4</sender>
+   <sender>ssthresh_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_ssthresh</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>447</x>
-     <y>401</y>
+     <x>457</x>
+     <y>432</y>
     </hint>
     <hint type="destinationlabel">
-     <x>386</x>
-     <y>396</y>
+     <x>362</x>
+     <y>433</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_ssthresh</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_4</receiver>
+   <receiver>ssthresh_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
-     <y>409</y>
+     <x>362</x>
+     <y>433</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>407</y>
+     <x>457</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alpha_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_alpha</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>440</x>
+     <y>88</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>372</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_alpha</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>alpha_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>349</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>438</x>
+     <y>102</y>
     </hint>
    </hints>
   </connection>

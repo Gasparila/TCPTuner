@@ -71,49 +71,45 @@ void MainWindow::on_chk_hystart_toggled(bool checked) {
   //   "(echo -n hystart: ) && (cat /sys/module/tcp_evil/parameters/hystart)");
 }
 
-void MainWindow::on_slider_beta_sliderMoved(int position) {
+void MainWindow::on_slider_alpha_valueChanged(int value) {
   stringstream ss;
-  ss << "echo -n " << position << " > /sys/module/tcp_evil/parameters/beta";
+  ss << "echo -n " << value <<
+    " > /sys/module/tcp_evil/parameters/alpha";
   system(ss.str().c_str());
 }
 
-void MainWindow::on_slider_beta_sliderReleased() {
-  // system(
-  //   "(echo -n beta: ) && (cat /sys/module/tcp_evil/parameters/beta)");
+void MainWindow::on_slider_beta_valueChanged(int value) {
+  stringstream ss;
+  ss << "echo -n " << value << " > /sys/module/tcp_evil/parameters/beta";
+  system(ss.str().c_str());
 }
 
-void MainWindow::on_slider_ack_delta_sliderMoved(int position) {
+void MainWindow::on_slider_ack_delta_valueChanged(int value) {
   stringstream ss;
-  ss << "echo -n " << position <<
+  ss << "echo -n " << value <<
     " > /sys/module/tcp_evil/parameters/hystart_ack_delta";
   system(ss.str().c_str());
 }
 
-void MainWindow::on_slider_ack_delta_sliderReleased() {
-  // system(
-  //   "(echo -n hystart_ack_delta: ) && (cat /sys/module/tcp_evil/parameters/hystart_ack_delta)");
-}
-
-void MainWindow::on_slider_low_window_sliderMoved(int position) {
+void MainWindow::on_slider_low_window_valueChanged(int value) {
   stringstream ss;
-  ss << "echo -n " << position <<
+  ss << "echo -n " << value <<
     " > /sys/module/tcp_evil/parameters/hystart_low_window";
   system(ss.str().c_str());
 }
 
-void MainWindow::on_slider_low_window_sliderReleased() {
-  // system(
-  //   "(echo -n hystart_low_window: ) && (cat /sys/module/tcp_evil/parameters/hystart_low_window)");
-}
-
-void MainWindow::on_slider_ssthresh_sliderMoved(int position) {
+void MainWindow::on_slider_ssthresh_valueChanged(int value) {
   stringstream ss;
-  ss << "echo -n " << position <<
+  ss << "echo -n " << value <<
     " > /sys/module/tcp_evil/parameters/initial_ssthresh";
   system(ss.str().c_str());
 }
 
-void MainWindow::on_slider_ssthresh_sliderReleased() {
-  // system(
-  //   "(echo -n initial_ssthresh: ) && (cat /sys/module/tcp_evil/parameters/initial_ssthresh)");
+void MainWindow::on_chk_use_alpha_toggled(bool checked) {
+  if (checked) {
+    system("echo -n 1 > /sys/module/tcp_evil/parameters/use_alpha");
+  }
+  else {
+    system("echo -n 0 > /sys/module/tcp_evil/parameters/use_alpha");
+  }
 }

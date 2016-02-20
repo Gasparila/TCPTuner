@@ -29,21 +29,17 @@ private slots:
 
   void on_chk_hystart_toggled(bool checked);
 
-  void on_slider_beta_sliderMoved(int position);
+  void on_slider_beta_valueChanged(int value);
 
-  void on_slider_beta_sliderReleased();
+  void on_slider_alpha_valueChanged(int value);
 
-  void on_slider_ack_delta_sliderMoved(int position);
+  void on_slider_ack_delta_valueChanged(int value);
 
-  void on_slider_ack_delta_sliderReleased();
+  void on_slider_low_window_valueChanged(int value);
 
-  void on_slider_low_window_sliderMoved(int position);
+  void on_slider_ssthresh_valueChanged(int value);
 
-  void on_slider_low_window_sliderReleased();
-
-  void on_slider_ssthresh_sliderMoved(int position);
-
-  void on_slider_ssthresh_sliderReleased();
+  void on_chk_use_alpha_toggled(bool checked);
 
 private:
   Ui::MainWindow* ui;

@@ -44,6 +44,8 @@
 #define HYSTART_DELAY_THRESH(x) clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX)
 
 static int fast_convergence __read_mostly = 1;
+static int alpha __read_mostly = 1; /* only considered is use_alpha is enabled */
+static int use_alpha __read_mostly = 0;
 static int beta __read_mostly = 717;     /* = 717/1024 (BICTCP_BETA_SCALE) */
 static int initial_ssthresh __read_mostly;
 static int bic_scale __read_mostly = 41;
@@ -61,6 +63,10 @@ static u64 cube_factor __read_mostly;
 /* Note parameters that are used for precomputing scale factors are read-only */
 module_param(fast_convergence, int, 0644);
 MODULE_PARM_DESC(fast_convergence, "turn on/off fast convergence");
+module_param(alpha, int, 0644);
+MODULE_PARM_DESC(alpha, "alpha to increase cwnd by per ack");
+module_param(use_alpha, int, 0644);
+MODULE_PARM_DESC(use_alpha, "Use a set additive increase rather than CUBIC");
 module_param(beta, int, 0644);
 MODULE_PARM_DESC(beta, "beta for multiplicative increase");
 module_param(initial_ssthresh, int, 0644);
@@ -83,7 +89,7 @@ MODULE_PARM_DESC(hystart_ack_delta,
 
 /* BIC TCP Parameters */
 struct bictcp {
-  u32 cnt;                       /* increase cwnd by 1 after ACKs */
+  u32 cnt;                       /* increase cwnd by ALPHA after ACKs */
   u32 last_max_cwnd;             /* last maximum snd_cwnd */
   u32 loss_cwnd;                 /* congestion window at last loss */
   u32 last_cwnd;                 /* the last snd_cwnd */
@@ -320,6 +326,14 @@ tcp_friendliness:
    * 2 packets ACKed, meaning cwnd grows at 1.5x per RTT.
    */
   ca->cnt = max(ca->cnt, 2U);
+
+  /**
+   * Added by TCPvil to allow control over an additive increase based on then
+   * module parameters.
+   */
+  if (use_alpha) {
+    ca->cnt = alpha;
+  }
 }
 
 static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
