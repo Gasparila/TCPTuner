@@ -326,14 +326,6 @@ tcp_friendliness:
    * 2 packets ACKed, meaning cwnd grows at 1.5x per RTT.
    */
   ca->cnt = max(ca->cnt, 2U);
-
-  /**
-   * Added by TCPvil to allow control over an additive increase based on then
-   * module parameters.
-   */
-  if (use_alpha) {
-    printk(KERN_INFO "%d\n", ca->cnt);
-  }
 }
 
 /**
