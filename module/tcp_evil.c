@@ -332,8 +332,38 @@ tcp_friendliness:
    * module parameters.
    */
   if (use_alpha) {
-    ca->cnt = alpha;
+    printk(KERN_INFO "%d\n", ca->cnt);
   }
+}
+
+/**
+ * This is taken from tcp_cong.c and moved here so that we can adjust alpha.
+ *
+ * Source: http://lxr.free-electrons.com/source/net/ipv4/tcp_cong.c#L391
+ * @param tp    Pointer to the TCP socket to modify.
+ * @param w     [description]
+ * @param acked [description]
+ */
+void evil_cong_avoid_ai(struct tcp_sock* tp, u32 w, u32 acked) {
+  /* If credits accumulated at a higher w, apply them gently now. */
+  if (tp->snd_cwnd_cnt >= w) {
+    tp->snd_cwnd_cnt = 0;
+    if (use_alpha) {
+      tp->snd_cwnd += alpha;
+    }
+    else {
+      tp->snd_cwnd++;
+    }
+  }
+
+  tp->snd_cwnd_cnt += acked;
+  if (tp->snd_cwnd_cnt >= w) {
+    u32 delta = tp->snd_cwnd_cnt / w;
+
+    tp->snd_cwnd_cnt -= delta * w;
+    tp->snd_cwnd += delta;
+  }
+  tp->snd_cwnd = min(tp->snd_cwnd, tp->snd_cwnd_clamp);
 }
 
 static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
@@ -354,7 +384,7 @@ static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
     }
   }
   bictcp_update(ca, tp->snd_cwnd, acked);
-  tcp_cong_avoid_ai(tp, ca->cnt, acked);
+  evil_cong_avoid_ai(tp, ca->cnt, acked);
 }
 
 static u32 bictcp_recalc_ssthresh(struct sock* sk) {
