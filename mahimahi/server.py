@@ -9,6 +9,7 @@ if len(sys.argv) != 2:
 PORT = int(sys.argv[1]) 
  
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
  
 try:
     s.bind(('', PORT))
