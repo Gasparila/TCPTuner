@@ -16,6 +16,15 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 MainWindow::~MainWindow() {
+  // Set defaults
+  system("echo -n 3 > /sys/module/tcp_evil/parameters/hystart_detect");
+  system("echo -n 1 > /sys/module/tcp_evil/parameters/fast_convergence");
+  system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+  system("echo -n 1 > /sys/module/tcp_evil/parameters/hystart");
+  system("echo -n 0 > /sys/module/tcp_evil/parameters/initial_ssthresh");
+  system("echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window");
+  system("echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta");
+  system("echo -n 717 > /sys/module/tcp_evil/parameters/beta");
   delete ui;
 }
 

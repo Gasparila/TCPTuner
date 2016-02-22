@@ -32,6 +32,11 @@ sudo ./SlidersOfEvil
 cd mahimahi
 sudo sysctl -w net.ipv4.ip_forward=1
 ```
+Note that for best results, evil should be an allowed congestion control algorithm, but should not be set. To do this, you can run
+```
+sudo sysctl -w net.ipv4.tcp_congestion_control=evil
+sudo sysctl -w net.ipv4.tcp_congestion_control=cubic
+```
 
 ## TCPvil's Parameters
 TCPvil exposes the parameters of TCP CUBIC to the user via the Sliders of Evil. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
