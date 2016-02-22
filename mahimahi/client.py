@@ -5,6 +5,7 @@ import random
 import string
 import os
 
+TCP_CONGESTION = 13
 ADDRESS = os.environ.get("MAHIMAHI_BASE") or "127.0.0.1"
 if len(sys.argv) != 2:
     print "usage: python server.py PORT"
@@ -14,6 +15,7 @@ PORT = int(sys.argv[1])
 SIZE = 1024
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.IPPROTO_TCP, TCP_CONGESTION, 'evil')
 try:
     s.connect((ADDRESS, PORT))
     print "connection established"
