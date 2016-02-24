@@ -6,8 +6,22 @@
 #include <sstream>
 #include <stdio.h>
 #include <string>
+#include <memory>
 
 using namespace std;
+
+/** from http://stackoverflow.com/questions/478898/how-to-execute-a-command-and-get-output-of-command-within-c */
+std::string exec(const char* cmd) {
+    shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
+    if (!pipe) return "ERROR";
+    char buffer[128];
+    string result = "";
+    while (!feof(pipe.get())) {
+        if (fgets(buffer, 128, pipe.get()) != NULL)
+            result += buffer;
+    }
+    return result;
+}
 
 MainWindow::MainWindow(QWidget* parent) :
   QMainWindow(parent),
@@ -21,42 +35,34 @@ MainWindow::~MainWindow() {
   e = system("echo -n 3 > /sys/module/tcp_evil/parameters/hystart_detect");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 1 > /sys/module/tcp_evil/parameters/fast_convergence");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 1 > /sys/module/tcp_evil/parameters/hystart");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 0 > /sys/module/tcp_evil/parameters/initial_ssthresh");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   e = system("echo -n 717 > /sys/module/tcp_evil/parameters/beta");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
-    exit(EXIT_FAILURE);
   }
   delete ui;
 }
@@ -196,4 +202,37 @@ void MainWindow::on_chk_use_alpha_toggled(bool checked) {
   if (e != 0) {
     cout << "[ERROR] Could not set use_alpha." << endl;
   }
+}
+
+void MainWindow::on_slider_rto_min_valueChanged(int value) {
+  int status;
+  string route = exec("ip route | head -n1");
+  string s = "rto_min";
+  string::size_type i = route.find(s);
+  if (i != string::npos) {
+    route.erase(route.begin()+i, route.end());
+  }
+  stringstream ss;
+  ss << "ip route change " << route << " rto_min " << value << "ms";
+
+  status = system(ss.str().c_str());
+  if (status != 0) {
+    cout << ss.str() << endl;
+    cout << "[ERROR] Could not set rto_min." << endl;
+  }
+}
+
+void MainWindow::on_slider_mtu_valueChanged(int value) {
+}
+
+void MainWindow::on_slider_initcwnd_valueChanged(int value) {
+}
+
+void MainWindow::on_slider_initrwnd_valueChanged(int value) {
+}
+
+void MainWindow::on_slider_rtt_valueChanged(int value) {
+}
+
+void MainWindow::on_slider_rttvar_valueChanged(int value) {
 }

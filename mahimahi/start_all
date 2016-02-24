@@ -14,7 +14,7 @@ if ( $receiver_pid < 0 ) {
 # run the sender inside a linkshell and a delayshell
 my @command = qw{mm-delay 40 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=120000 --uplink-queue=droptail --uplink-queue-args=bytes=120000 --meter-uplink --meter-uplink-delay --uplink-log=/tmp/tcpvil_uplink_log -- sh -c};
 
-push @command, q{./client.py 5050};
+push @command, q{./client.py 5050 1};
 
 # for the contest, we will send data over Verizon's downlink
 # (datagrump sender's uplink)
@@ -28,11 +28,6 @@ system @command;
 
 # kill the receiver
 kill 'INT', $receiver_pid;
-
-print "\n";
-
-# analyze performance locally
-system q{mm-throughput-graph 500 /tmp/contest_uplink_log > /dev/null};
 
 print "\n";
 print qq{ done.\n\n};

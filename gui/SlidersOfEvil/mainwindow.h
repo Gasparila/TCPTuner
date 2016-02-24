@@ -41,6 +41,18 @@ private slots:
 
   void on_chk_use_alpha_toggled(bool checked);
 
+  void on_slider_rto_min_valueChanged(int value);
+
+  void on_slider_mtu_valueChanged(int value);
+
+  void on_slider_initcwnd_valueChanged(int value);
+
+  void on_slider_initrwnd_valueChanged(int value);
+
+  void on_slider_rtt_valueChanged(int value);
+
+  void on_slider_rttvar_valueChanged(int value);
+
 private:
   Ui::MainWindow* ui;
 };

@@ -1,0 +1,27 @@
+#!/usr/bin/perl -w
+
+use strict;
+
+my $receiver_pid = fork;
+
+if ( $receiver_pid < 0 ) {
+  die qq{$!};
+} elsif ( $receiver_pid == 0 ) {
+  # child
+  exec q{./server.py 5050} or die qq{$!};
+}
+
+my @command = qw{mm-delay 20 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=60000 --uplink-queue=droptail --uplink-queue-args=bytes=60000};
+
+# for the contest, we will send data over Verizon's downlink
+# (datagrump sender's uplink)
+die unless $command[ 3 ] eq "UPLINK";
+$command[ 3 ] = qq{12Mbps.down};
+
+die unless $command[ 4 ] eq "DOWNLINK";
+$command[ 4 ] = qq{12Mbps.up};
+
+system @command;
+
+print "\n";
+print qq{ done.\n\n};

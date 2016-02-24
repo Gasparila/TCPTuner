@@ -1,0 +1,2 @@
+#!/bin/bash
+mm-meter --meter-uplink ./client.py $@
