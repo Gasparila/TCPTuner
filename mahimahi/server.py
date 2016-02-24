@@ -1,6 +1,16 @@
 #!/usr/bin/python
 import socket
 import sys
+import thread
+
+def handle_connection(conn):
+    num_msg = 0
+    while True:
+        msg = conn.recv(1024)
+        if not msg:
+            break
+        num_msg += 1
+    print num_msg
 
 if len(sys.argv) != 2:
     print "usage: python server.py PORT"
@@ -18,17 +28,11 @@ except socket.error:
     sys.exit(-1)
      
 s.listen(1) #only have 1 connection
- 
 print "Awaiting connection on port %d" % PORT
-conn,_ = s.accept()
-print "Accepted connection"
-num_msg = 0
-while True:
-    msg = conn.recv(1024)
-    if not msg:
-        break
-    num_msg += 1
-print num_msg
 
+while (True):
+    conn,_ = s.accept()
+    print "Accepted connection"
+    thread.start_new_thread(handle_connection, (conn,))
      
 s.close()

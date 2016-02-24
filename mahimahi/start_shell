@@ -11,10 +11,7 @@ if ( $receiver_pid < 0 ) {
   exec q{./server.py 5050} or die qq{$!};
 }
 
-# run the sender inside a linkshell and a delayshell
-my @command = qw{mm-delay 20 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=60000 --uplink-queue=droptail --uplink-queue-args=bytes=60000 --meter-uplink --meter-uplink-delay -- sh -c};
-
-push @command, q{./client.py 5050 1};
+my @command = qw{mm-delay 20 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=60000 --uplink-queue=droptail --uplink-queue-args=bytes=60000};
 
 # for the contest, we will send data over Verizon's downlink
 # (datagrump sender's uplink)
@@ -25,9 +22,6 @@ die unless $command[ 4 ] eq "DOWNLINK";
 $command[ 4 ] = qq{12Mbps.up};
 
 system @command;
-
-# kill the receiver
-kill 'INT', $receiver_pid;
 
 print "\n";
 print qq{ done.\n\n};
