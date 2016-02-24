@@ -92,7 +92,7 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>20</number>
+            <number>10</number>
            </property>
            <property name="value">
             <number>1</number>
@@ -127,7 +127,7 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>20</number>
+            <number>10</number>
            </property>
            <property name="value">
             <number>1</number>
@@ -192,7 +192,7 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>2048</number>
+            <number>1024</number>
            </property>
            <property name="sliderPosition">
             <number>717</number>
@@ -224,7 +224,7 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>2048</number>
+            <number>1024</number>
            </property>
            <property name="value">
             <number>717</number>

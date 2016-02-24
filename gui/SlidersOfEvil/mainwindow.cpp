@@ -212,6 +212,9 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
   if (i != string::npos) {
     route.erase(route.begin()+i, route.end());
   }
+  else {
+    route.pop_back();
+  }
   stringstream ss;
   ss << "ip route change " << route << " rto_min " << value << "ms";
 
