@@ -54,9 +54,6 @@ MainWindow::MainWindow(QWidget* parent) :
   watcher.addPath("/sys/module/tcp_evil/parameters/hystart_low_window");
   watcher.addPath("/sys/module/tcp_evil/parameters/initial_ssthresh");
   watcher.addPath("/sys/module/tcp_evil/parameters/tcp_friendliness");
-  QStringList fileList = watcher.files();
-  Q_FOREACH(QString file, fileList)
-  qDebug() << "[info] Watching: " << file << "\n";
 
   QObject::connect(&watcher, SIGNAL(fileChanged(QString)), this,
                    SLOT(updateGUI(QString)));
