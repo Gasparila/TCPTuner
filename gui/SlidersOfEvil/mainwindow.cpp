@@ -335,7 +335,7 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
              "echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window && "
              "echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta && "
              "echo -n 717 > /sys/module/tcp_evil/parameters/beta && "
-             "echo -n 1 > /sys/module/tcp_evil/parameters/alpha");
+             "echo -n 10 > /sys/module/tcp_evil/parameters/alpha");
   if (e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
   }
