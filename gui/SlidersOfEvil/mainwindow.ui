@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
+    <width>646</width>
     <height>650</height>
    </rect>
   </property>
@@ -1424,6 +1424,19 @@
       </layout>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btn_restoreDefaults">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Restore Cubic Defaults</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -1431,7 +1444,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>520</width>
+     <width>646</width>
      <height>21</height>
     </rect>
    </property>

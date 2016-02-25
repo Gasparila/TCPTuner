@@ -53,6 +53,8 @@ private slots:
 
   void on_slider_rttvar_valueChanged(int value);
 
+  void on_btn_restoreDefaults_clicked();
+
 private:
   Ui::MainWindow* ui;
 };

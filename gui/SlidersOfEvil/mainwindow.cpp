@@ -30,40 +30,6 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 MainWindow::~MainWindow() {
-  // Set defaults
-  int e;
-  e = system("echo -n 3 > /sys/module/tcp_evil/parameters/hystart_detect");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 1 > /sys/module/tcp_evil/parameters/fast_convergence");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 1 > /sys/module/tcp_evil/parameters/hystart");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 0 > /sys/module/tcp_evil/parameters/initial_ssthresh");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
-  e = system("echo -n 717 > /sys/module/tcp_evil/parameters/beta");
-  if (e != 0) {
-    cout << "[ERROR] Couldn't set defaults." << endl;
-  }
   delete ui;
 }
 
@@ -238,4 +204,42 @@ void MainWindow::on_slider_rtt_valueChanged(int value) {
 }
 
 void MainWindow::on_slider_rttvar_valueChanged(int value) {
+}
+
+void MainWindow::on_btn_restoreDefaults_clicked()
+{
+    // Set defaults
+    int e;
+    e = system("echo -n 3 > /sys/module/tcp_evil/parameters/hystart_detect");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 1 > /sys/module/tcp_evil/parameters/fast_convergence");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 1 > /sys/module/tcp_evil/parameters/hystart");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 0 > /sys/module/tcp_evil/parameters/initial_ssthresh");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
+    e = system("echo -n 717 > /sys/module/tcp_evil/parameters/beta");
+    if (e != 0) {
+      cout << "[ERROR] Couldn't set defaults." << endl;
+    }
 }
