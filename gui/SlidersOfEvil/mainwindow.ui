@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>646</width>
-    <height>650</height>
+    <width>520</width>
+    <height>654</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -47,9 +47,9 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="layout_alpha">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QCheckBox" name="chk_use_alpha">
+          <widget class="QLabel" name="label_alpha">
            <property name="minimumSize">
             <size>
              <width>100</width>
@@ -57,10 +57,7 @@
             </size>
            </property>
            <property name="text">
-            <string>use_alpha:</string>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
+            <string>alpha</string>
            </property>
           </widget>
          </item>
@@ -1444,7 +1441,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>646</width>
+     <width>520</width>
      <height>21</height>
     </rect>
    </property>
@@ -1696,12 +1693,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>397</x>
-     <y>464</y>
+     <x>398</x>
+     <y>461</y>
     </hint>
     <hint type="destinationlabel">
-     <x>457</x>
-     <y>467</y>
+     <x>499</x>
+     <y>461</y>
     </hint>
    </hints>
   </connection>
@@ -1729,11 +1726,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>398</x>
-     <y>498</y>
+     <y>490</y>
     </hint>
     <hint type="destinationlabel">
-     <x>460</x>
-     <y>500</y>
+     <x>499</x>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -1744,12 +1741,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>451</x>
-     <y>522</y>
+     <x>499</x>
+     <y>519</y>
     </hint>
     <hint type="destinationlabel">
-     <x>395</x>
-     <y>521</y>
+     <x>398</x>
+     <y>519</y>
     </hint>
    </hints>
   </connection>
@@ -1760,12 +1757,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>393</x>
-     <y>532</y>
+     <x>398</x>
+     <y>519</y>
     </hint>
     <hint type="destinationlabel">
-     <x>453</x>
-     <y>532</y>
+     <x>499</x>
+     <y>519</y>
     </hint>
    </hints>
   </connection>
@@ -1776,12 +1773,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>459</x>
-     <y>555</y>
+     <x>499</x>
+     <y>548</y>
     </hint>
     <hint type="destinationlabel">
-     <x>403</x>
-     <y>555</y>
+     <x>404</x>
+     <y>548</y>
     </hint>
    </hints>
   </connection>
@@ -1792,12 +1789,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>394</x>
-     <y>567</y>
+     <x>404</x>
+     <y>548</y>
     </hint>
     <hint type="destinationlabel">
-     <x>469</x>
-     <y>568</y>
+     <x>499</x>
+     <y>548</y>
     </hint>
    </hints>
   </connection>
@@ -1808,12 +1805,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>393</x>
-     <y>591</y>
+     <x>398</x>
+     <y>577</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>589</y>
+     <x>499</x>
+     <y>577</y>
     </hint>
    </hints>
   </connection>
@@ -1824,12 +1821,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>453</x>
-     <y>597</y>
+     <x>499</x>
+     <y>577</y>
     </hint>
     <hint type="destinationlabel">
-     <x>394</x>
-     <y>595</y>
+     <x>398</x>
+     <y>577</y>
     </hint>
    </hints>
   </connection>

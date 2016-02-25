@@ -44,8 +44,7 @@
 #define HYSTART_DELAY_THRESH(x) clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX)
 
 static int fast_convergence __read_mostly = 1;
-static int alpha __read_mostly = 1; /* only considered is use_alpha is enabled */
-static int use_alpha __read_mostly = 0;
+static int alpha __read_mostly = 1; 
 static int beta __read_mostly = 717;     /* = 717/1024 (BICTCP_BETA_SCALE) */
 static int initial_ssthresh __read_mostly;
 static int bic_scale __read_mostly = 41;
@@ -65,8 +64,6 @@ module_param(fast_convergence, int, 0644);
 MODULE_PARM_DESC(fast_convergence, "turn on/off fast convergence");
 module_param(alpha, int, 0644);
 MODULE_PARM_DESC(alpha, "alpha to increase cwnd by per ack");
-module_param(use_alpha, int, 0644);
-MODULE_PARM_DESC(use_alpha, "Use a set additive increase rather than CUBIC");
 module_param(beta, int, 0644);
 MODULE_PARM_DESC(beta, "beta for multiplicative increase");
 module_param(initial_ssthresh, int, 0644);
@@ -340,12 +337,7 @@ void evil_cong_avoid_ai(struct tcp_sock* tp, u32 w, u32 acked) {
   /* If credits accumulated at a higher w, apply them gently now. */
   if (tp->snd_cwnd_cnt >= w) {
     tp->snd_cwnd_cnt = 0;
-    if (use_alpha) {
-      tp->snd_cwnd += alpha;
-    }
-    else {
-      tp->snd_cwnd++;
-    }
+    tp->snd_cwnd += alpha;
   }
 
   tp->snd_cwnd_cnt += acked;

@@ -1,7 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "paramwatcher.h"
 #include <QMainWindow>
+#include <QFileSystemWatcher>
 
 namespace Ui {
   class MainWindow;
@@ -17,11 +19,11 @@ public:
 private slots:
   void on_actionExit_triggered();
 
-  void on_rb_packet_train_clicked();
-
   void on_chk_fast_convergence_toggled(bool checked);
 
   void on_chk_tcp_friendliness_toggled(bool checked);
+
+  void on_rb_packet_train_clicked();
 
   void on_rb_delay_clicked();
 
@@ -55,8 +57,12 @@ private slots:
 
   void on_btn_restoreDefaults_clicked();
 
+  void updateGUI(const QString& str);
+
 private:
   Ui::MainWindow* ui;
+  QFileSystemWatcher watcher;
+  ParamWatcher pw;
 };
 
 #endif // MAINWINDOW_H
