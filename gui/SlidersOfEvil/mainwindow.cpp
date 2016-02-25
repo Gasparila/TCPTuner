@@ -71,7 +71,6 @@ void MainWindow::on_actionExit_triggered() {
 }
 
 void MainWindow::updateGUI(const QString& str) {
-  cout << "[info] Update GUI" << endl;
   string value;
   int i_value;
   if (str.toStdString() == "/sys/module/tcp_evil/parameters/alpha") {
