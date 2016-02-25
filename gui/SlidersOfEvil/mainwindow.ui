@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>520</width>
-    <height>562</height>
+    <height>650</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,14 +19,14 @@
   <property name="minimumSize">
    <size>
     <width>520</width>
-    <height>500</height>
+    <height>650</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>TCPvil Sliders of Evil</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
      <widget class="QGroupBox" name="box_tcpevil_params">
       <property name="title">
@@ -34,7 +34,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <spacer name="verticalSpacer">
+        <spacer name="verticalSpacer_10">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -47,7 +47,107 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_alpha">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>alpha</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_alpha_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_alpha">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+           <property name="sliderPosition">
+            <number>1</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_alpha_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="alpha_value">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>9</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_beta">
            <property name="minimumSize">
@@ -57,12 +157,12 @@
             </size>
            </property>
            <property name="text">
-            <string>beta</string>
+            <string>beta/1024</string>
            </property>
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta">
+          <spacer name="spacer_beta_l">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -89,7 +189,10 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>2048</number>
+            <number>1024</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
            </property>
            <property name="sliderPosition">
             <number>717</number>
@@ -100,7 +203,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_2">
+          <spacer name="spacer_beta_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -121,7 +224,7 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>2048</number>
+            <number>1024</number>
            </property>
            <property name="value">
             <number>717</number>
@@ -144,7 +247,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="laout_fast_convergence">
+        <layout class="QHBoxLayout" name="layout_fast_convergence">
          <item>
           <spacer name="spacer_fast_l">
            <property name="orientation">
@@ -262,7 +365,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <layout class="QHBoxLayout" name="layout_hystartackdelta">
          <item>
           <widget class="QLabel" name="label_ack_delta">
            <property name="minimumSize">
@@ -315,7 +418,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_3">
+          <spacer name="spaceer_ack_delta_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -331,7 +434,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_2">
+          <widget class="QSpinBox" name="hystartackdelta_value">
            <property name="minimum">
             <number>1</number>
            </property>
@@ -438,7 +541,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <layout class="QHBoxLayout" name="layout_low_window">
          <item>
           <widget class="QLabel" name="label_low_window">
            <property name="minimumSize">
@@ -491,7 +594,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_4">
+          <spacer name="spacer_low_window_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -507,7 +610,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_3">
+          <widget class="QSpinBox" name="low_window_value">
            <property name="minimum">
             <number>1</number>
            </property>
@@ -535,7 +638,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <layout class="QHBoxLayout" name="layout_initial_ssthresh">
          <item>
           <widget class="QLabel" name="label_ssthresh">
            <property name="minimumSize">
@@ -588,7 +691,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="spacer_beta_5">
+          <spacer name="spacer_ssthresh_r">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -604,7 +707,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QSpinBox" name="beta_value_4">
+          <widget class="QSpinBox" name="ssthresh_value">
            <property name="minimum">
             <number>0</number>
            </property>
@@ -704,6 +807,634 @@
       <property name="title">
        <string>IP-ROUTE PARAMETERS</string>
       </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <spacer name="verticalSpacer_17">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_rto_min">
+         <item>
+          <widget class="QLabel" name="label_rto_min">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>rto_min (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rto_min_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_rto_min">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>1000</number>
+           </property>
+           <property name="sliderPosition">
+            <number>1000</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rto_min_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="rto_min_value">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>1000</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_16">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_mtu">
+         <item>
+          <widget class="QLabel" name="label_mtu">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>mtu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_mtu_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_mtu">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>1000</number>
+           </property>
+           <property name="sliderPosition">
+            <number>1000</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_mtu_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="mtu_value">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>1000</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_15">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_initcwnd">
+         <item>
+          <widget class="QLabel" name="label_initcwnd">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>initcwnd</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_initcwnd_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_initcwnd">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="sliderPosition">
+            <number>0</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_init_cwnd_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="initcwnd_value">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_14">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>1</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_initrwnd">
+         <item>
+          <widget class="QLabel" name="label_initrwnd">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>initrwnd</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_initrwnd_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_initrwnd">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+           <property name="sliderPosition">
+            <number>0</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_initrwnd_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="initrwnd_value">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_13">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_rtt">
+         <item>
+          <widget class="QLabel" name="label_rtt">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>rtt (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rtt_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_rtt">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>500</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+           <property name="sliderPosition">
+            <number>20</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rtt_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="rtt_value">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>500</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_12">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_rttvar">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>rttvar (ms)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rttvar_l">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_rttvar">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+           <property name="sliderPosition">
+            <number>20</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer_rttvar_r">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Minimum</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="rttvar_value">
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+           <property name="value">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_18">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_restoreDefaults">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Restore Cubic Defaults</string>
+      </property>
      </widget>
     </item>
    </layout>
@@ -757,12 +1488,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>407</x>
-     <y>76</y>
+     <x>487</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
-     <x>325</x>
-     <y>77</y>
+     <x>371</x>
+     <y>122</y>
     </hint>
    </hints>
   </connection>
@@ -773,108 +1504,332 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>343</x>
-     <y>77</y>
+     <x>371</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>444</x>
-     <y>76</y>
+     <x>487</x>
+     <y>119</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_2</sender>
+   <sender>hystartackdelta_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_ack_delta</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>464</x>
-     <y>219</y>
+     <x>460</x>
+     <y>236</y>
     </hint>
     <hint type="destinationlabel">
-     <x>393</x>
-     <y>221</y>
+     <x>371</x>
+     <y>237</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_ack_delta</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_2</receiver>
+   <receiver>hystartackdelta_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>396</x>
-     <y>231</y>
+     <x>371</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>460</x>
-     <y>230</y>
+     <y>236</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_3</sender>
+   <sender>low_window_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_low_window</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>477</x>
-     <y>347</y>
+     <x>466</x>
+     <y>309</y>
     </hint>
     <hint type="destinationlabel">
-     <x>418</x>
-     <y>345</y>
+     <x>371</x>
+     <y>310</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_low_window</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_3</receiver>
+   <receiver>low_window_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
-     <y>356</y>
+     <x>371</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>483</x>
-     <y>356</y>
+     <x>466</x>
+     <y>309</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>beta_value_4</sender>
+   <sender>ssthresh_value</sender>
    <signal>valueChanged(int)</signal>
    <receiver>slider_ssthresh</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>447</x>
-     <y>401</y>
+     <x>466</x>
+     <y>348</y>
     </hint>
     <hint type="destinationlabel">
-     <x>386</x>
-     <y>396</y>
+     <x>371</x>
+     <y>349</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>slider_ssthresh</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>beta_value_4</receiver>
+   <receiver>ssthresh_value</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
-     <y>409</y>
+     <x>371</x>
+     <y>349</y>
     </hint>
     <hint type="destinationlabel">
-     <x>452</x>
-     <y>407</y>
+     <x>466</x>
+     <y>348</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>alpha_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_alpha</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>460</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>371</x>
+     <y>81</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_alpha</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>alpha_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>460</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rto_min_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_rto_min</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>454</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_rto_min</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>rto_min_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>454</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>454</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mtu_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_mtu</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_mtu</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>mtu_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>486</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>initcwnd_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_initcwnd</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>518</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>518</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_initcwnd</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>initcwnd_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>518</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>518</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>initrwnd_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_initrwnd</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>550</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_initrwnd</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>initrwnd_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>550</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>550</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rtt_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_rtt</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>582</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>503</x>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_rtt</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>rtt_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>582</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slider_rttvar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>rttvar_value</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>497</x>
+     <y>614</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>614</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rttvar_value</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>slider_rttvar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>614</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>614</y>
     </hint>
    </hints>
   </connection>

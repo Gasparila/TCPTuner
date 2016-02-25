@@ -12,7 +12,7 @@ if ( $receiver_pid < 0 ) {
 }
 
 # run the sender inside a linkshell and a delayshell
-my @command = qw{mm-delay 20 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=60000 --uplink-queue=droptail --uplink-queue-args=bytes=60000 --meter-uplink --meter-uplink-delay -- sh -c};
+my @command = qw{mm-delay 40 mm-link UPLINK DOWNLINK --downlink-queue=droptail --downlink-queue-args=bytes=120000 --uplink-queue=droptail --uplink-queue-args=bytes=120000 --meter-uplink --meter-uplink-delay --uplink-log=/tmp/tcpvil_uplink_log -- sh -c};
 
 push @command, q{./client.py 5050 1};
 
