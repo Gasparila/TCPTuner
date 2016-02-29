@@ -318,8 +318,8 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
     string s = "rto_min";
     string::size_type start = route.find(s);
     if (start != string::npos) {
-      //end is first space after rto_min lock <-- include space
-      string::size_type end = route.find(" ", start + 13); 
+      //end is first space after rto_min <-- include space
+      string::size_type end = route.find(" ", start + 8); 
       route.erase(start, end);
     }
     stringstream ss;
