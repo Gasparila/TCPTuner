@@ -311,10 +311,16 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
   vector<string> routes = split(exec("ip route"),'\n');
  
   for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
     string s = "rto_min";
-    string::size_type i = route.find(s);
-    if (i != string::npos) {
-      route.erase(route.begin() + i, route.end());
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after rto_min lock <-- include space
+      string::size_type end = route.find(" ", start + 13); 
+      route.erase(start, end);
     }
     stringstream ss;
     ss << "ip route change " << route;
@@ -328,25 +334,156 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
       cout << "[ERROR] Could not set rto_min." << endl;
     }
   }
-  //now verify results
-  if (DEBUG) {
-    cout << exec("ip route") << flush;
-  }
 }
 
 void MainWindow::on_slider_mtu_valueChanged(int value) {
+  int status;
+  vector<string> routes = split(exec("ip route"),'\n');
+ 
+  for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
+    string s = "mtu";
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after mtu <-- include space
+      string::size_type end = route.find(" ", start + 4); 
+      route.erase(start, end);
+    }
+    stringstream ss;
+    ss << "ip route change " << route;
+    if (value != 0) {
+      ss << " mtu " << value;
+    }
+
+    status = system(ss.str().c_str());
+    if (DEBUG && status != 0) {
+      cout << ss.str() << endl;
+      cout << "[ERROR] Could not set mtu." << endl;
+    }
+  }
 }
 
 void MainWindow::on_slider_initcwnd_valueChanged(int value) {
+  int status;
+  vector<string> routes = split(exec("ip route"),'\n');
+ 
+  for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
+    string s = "initcwnd";
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after initcwnd <-- include space
+      string::size_type end = route.find(" ", start + 9); 
+      route.erase(start, end);
+    }
+    stringstream ss;
+    ss << "ip route change " << route;
+    if (value != 0) {
+      ss << " initcwnd " << value;
+    }
+
+    status = system(ss.str().c_str());
+    if (DEBUG && status != 0) {
+      cout << ss.str() << endl;
+      cout << "[ERROR] Could not set initcwnd." << endl;
+    }
+  }
 }
 
 void MainWindow::on_slider_initrwnd_valueChanged(int value) {
+  int status;
+  vector<string> routes = split(exec("ip route"),'\n');
+ 
+  for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
+    string s = "initrwnd";
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after initrwnd <-- include space
+      string::size_type end = route.find(" ", start + 9); 
+      route.erase(start, end);
+    }
+    stringstream ss;
+    ss << "ip route change " << route;
+    if (value != 0) {
+      ss << " initrwnd " << value;
+    }
+
+    status = system(ss.str().c_str());
+    if (DEBUG && status != 0) {
+      cout << ss.str() << endl;
+      cout << "[ERROR] Could not set initrwnd." << endl;
+    }
+  }
 }
 
 void MainWindow::on_slider_rtt_valueChanged(int value) {
+  int status;
+  vector<string> routes = split(exec("ip route"),'\n');
+ 
+  for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
+    string s = "rtt";
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after rtt <-- include space
+      string::size_type end = route.find(" ", start + 4); 
+      route.erase(start, end);
+    }
+    stringstream ss;
+    ss << "ip route change " << route;
+    if (value != 0) {
+      ss << " rtt " << value << "ms";
+    }
+
+    status = system(ss.str().c_str());
+    if (DEBUG && status != 0) {
+      cout << ss.str() << endl;
+      cout << "[ERROR] Could not set rtt." << endl;
+    }
+  }
 }
 
 void MainWindow::on_slider_rttvar_valueChanged(int value) {
+  int status;
+  vector<string> routes = split(exec("ip route"),'\n');
+ 
+  for (string & route : routes) {
+    string::size_type lock_pos = route.find(" lock");
+    if (lock_pos != string::npos) {
+      route.erase(lock_pos, 5);
+    }
+    string s = "rttvar";
+    string::size_type start = route.find(s);
+    if (start != string::npos) {
+      //end is first space after rttvar <-- include space
+      string::size_type end = route.find(" ", start + 7); 
+      route.erase(start, end);
+    }
+    stringstream ss;
+    ss << "ip route change " << route;
+    if (value != 0) {
+      ss << " rttvar " << value << "ms";
+    }
+
+    status = system(ss.str().c_str());
+    if (DEBUG && status != 0) {
+      cout << ss.str() << endl;
+      cout << "[ERROR] Could not set rttvar." << endl;
+    }
+  }
 }
 
 void MainWindow::on_btn_restoreDefaults_clicked() {
@@ -365,5 +502,10 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
   if (DEBUG && e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
   }
-  on_slider_rto_min_valueChanged(0);
+  ui->slider_rto_min->setValue(0);
+  ui->slider_mtu->setValue(0);
+  ui->slider_initcwnd->setValue(0);
+  ui->slider_initrwnd->setValue(0);
+  ui->slider_rtt->setValue(0);
+  ui->slider_rttvar->setValue(0);
 }
