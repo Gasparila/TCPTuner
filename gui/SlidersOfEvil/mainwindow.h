@@ -18,6 +18,8 @@ public:
 private slots:
   void on_actionExit_triggered();
 
+  void update_graph();
+
   void on_chk_fast_convergence_toggled(bool checked);
 
   void on_chk_tcp_friendliness_toggled(bool checked);
@@ -64,3 +66,4 @@ private:
 };
 
 #endif // MAINWINDOW_H
+

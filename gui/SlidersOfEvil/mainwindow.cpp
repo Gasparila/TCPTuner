@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tcp_grapher.h"
 #include <QDebug>
 #include <QMessageBox>
 #include <cstdlib>
@@ -16,7 +17,7 @@
 using namespace std;
 
 /** from http://stackoverflow.com/questions/478898/how-to-execute-a-command-and-get-output-of-command-within-c */
-string exec(const char* cmd) {
+static string exec(const char* cmd) {
   shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
   if (!pipe) {
     return "ERROR";
@@ -31,7 +32,7 @@ string exec(const char* cmd) {
   return result;
 }
 
-vector<string> &split(const string &s, char delim, vector<string> &elems) {
+static vector<string> &split(const string &s, char delim, vector<string> &elems) {
   stringstream ss(s);
   string item;
   while (getline(ss, item, delim)) {
@@ -41,7 +42,7 @@ vector<string> &split(const string &s, char delim, vector<string> &elems) {
 }
 
 
-vector<string> split(const string &s, char delim) {
+static vector<string> split(const string &s, char delim) {
   vector<string> elems;
   split(s, delim, elems);
   return elems;
@@ -76,6 +77,7 @@ MainWindow::MainWindow(QWidget* parent) :
 
     QObject::connect(&watcher, SIGNAL(fileChanged(QString)), this,
         SLOT(updateGUI(QString)));
+    update_graph();
   }
 
 MainWindow::~MainWindow() {
@@ -176,6 +178,27 @@ void MainWindow::updateGUI(const QString& str) {
   }
 }
 
+void MainWindow::update_graph() {
+    // generate some data:
+    QVector<double> x(101), y(101); // initialize with entries 0..100
+    tcp_grapher g(1000, .4, ui->alpha_value->value(), ui->beta_value->value());
+    for (int i=0; i<101; ++i) {
+      x[i] = i;
+      y[i] = g.get_next();
+    }
+    // create graph and assign data to it:
+    ui->tcp_graph->addGraph();
+    ui->tcp_graph->graph(0)->setData(x, y);
+    // give the axes some labels:
+    ui->tcp_graph->xAxis->setLabel("time");
+    ui->tcp_graph->yAxis->setLabel("cwnd");
+    // set axes ranges, so we see all data:
+    ui->tcp_graph->xAxis->setRange(0, x.size());
+    ui->tcp_graph->yAxis->setRange(0, g.get_max_window());
+    ui->tcp_graph->replot();
+}
+
+
 void MainWindow::on_rb_packet_train_clicked() {
   int status;
   status = system("echo -n 1 > /sys/module/tcp_evil/parameters/hystart_detect");
@@ -248,6 +271,7 @@ void MainWindow::on_slider_alpha_valueChanged(int value) {
   if (DEBUG && status != 0) {
     cout << "[ERROR] Could not set alpha." << endl;
   }
+  update_graph();
 }
 
 void MainWindow::on_slider_beta_valueChanged(int value) {
@@ -258,6 +282,7 @@ void MainWindow::on_slider_beta_valueChanged(int value) {
   if (DEBUG && status != 0) {
     cout << "[ERROR] Could not set beta." << endl;
   }
+  update_graph();
 }
 
 void MainWindow::on_slider_ack_delta_valueChanged(int value) {
@@ -509,3 +534,4 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
   ui->slider_rtt->setValue(0);
   ui->slider_rttvar->setValue(0);
 }
+

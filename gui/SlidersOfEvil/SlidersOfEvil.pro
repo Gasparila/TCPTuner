@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = SlidersOfEvil
 TEMPLATE = app
@@ -14,8 +14,13 @@ TEMPLATE = app
 CONFIG += c++11
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+        qcustomplot.cpp \
+    tcp_grapher.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+            qcustomplot.h \
+    tcp_grapher.h
 
 FORMS    += mainwindow.ui
+
