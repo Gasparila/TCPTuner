@@ -190,7 +190,8 @@ void MainWindow::update_graph() {
     ui->tcp_graph->addGraph();
     ui->tcp_graph->graph(0)->setData(x, y);
     // give the axes some labels:
-    ui->tcp_graph->xAxis->setLabel("time");
+    ui->tcp_graph->xAxis->setLabel("RTTs");
+    ui->tcp_graph->xAxis->setTickStep(1);
     ui->tcp_graph->yAxis->setLabel("cwnd");
     // set axes ranges, so we see all data:
     ui->tcp_graph->xAxis->setRange(0, x.size());
