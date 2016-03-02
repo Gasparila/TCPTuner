@@ -318,19 +318,6 @@ void MainWindow::on_slider_ssthresh_valueChanged(int value) {
   }
 }
 
-void MainWindow::on_chk_use_alpha_toggled(bool checked) {
-  int e;
-  if (checked) {
-    e = system("echo -n 1 > /sys/module/tcp_evil/parameters/use_alpha");
-  }
-  else {
-    e = system("echo -n 0 > /sys/module/tcp_evil/parameters/use_alpha");
-  }
-  if (DEBUG && e != 0) {
-    cout << "[ERROR] Could not set use_alpha." << endl;
-  }
-}
-
 void MainWindow::on_slider_rto_min_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
@@ -534,4 +521,3 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
   ui->slider_rtt->setValue(0);
   ui->slider_rttvar->setValue(0);
 }
-

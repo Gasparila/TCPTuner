@@ -42,8 +42,6 @@ private slots:
 
   void on_slider_ssthresh_valueChanged(int value);
 
-  void on_chk_use_alpha_toggled(bool checked);
-
   void on_slider_rto_min_valueChanged(int value);
 
   void on_slider_mtu_valueChanged(int value);

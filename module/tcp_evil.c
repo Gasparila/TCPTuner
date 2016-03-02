@@ -44,7 +44,7 @@
 #define HYSTART_DELAY_THRESH(x) clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX)
 
 static int fast_convergence __read_mostly = 1;
-static int alpha __read_mostly = 1; 
+static int alpha __read_mostly = 10;
 static int beta __read_mostly = 717;     /* = 717/1024 (BICTCP_BETA_SCALE) */
 static int initial_ssthresh __read_mostly;
 static int bic_scale __read_mostly = 41;
@@ -255,7 +255,7 @@ static inline void bictcp_update(struct bictcp* ca, u32 cwnd, u32 acked) {
    * (so time^3 is done by using 64 bit)
    * and without the support of division of 64bit numbers
    * (so all divisions are done by using 32 bit)
-   *  also NOTE the unit of those veriables
+   *  also NOTE the unit of those variables
    *        time  = (t - K) / 2^bictcp_HZ
    *        c = bic_scale >> 10
    * rtt  = (srtt >> 3) / HZ
@@ -278,6 +278,7 @@ static inline void bictcp_update(struct bictcp* ca, u32 cwnd, u32 acked) {
 
   /* c/rtt * (t-K)^3 */
   delta = (cube_rtt_scale * offs * offs * offs) >> (10 + 3 * BICTCP_HZ);
+
   if (t < ca->bic_K) {                                 /* below origin*/
     bic_target = ca->bic_origin_point - delta;
   }
@@ -325,31 +326,6 @@ tcp_friendliness:
   ca->cnt = max(ca->cnt, 2U);
 }
 
-/**
- * This is taken from tcp_cong.c and moved here so that we can adjust alpha.
- *
- * Source: http://lxr.free-electrons.com/source/net/ipv4/tcp_cong.c#L391
- * @param tp    Pointer to the TCP socket to modify.
- * @param w     [description]
- * @param acked [description]
- */
-void evil_cong_avoid_ai(struct tcp_sock* tp, u32 w, u32 acked) {
-  /* If credits accumulated at a higher w, apply them gently now. */
-  if (tp->snd_cwnd_cnt >= w) {
-    tp->snd_cwnd_cnt = 0;
-    tp->snd_cwnd += alpha;
-  }
-
-  tp->snd_cwnd_cnt += acked;
-  if (tp->snd_cwnd_cnt >= w) {
-    u32 delta = tp->snd_cwnd_cnt / w;
-
-    tp->snd_cwnd_cnt -= delta * w;
-    tp->snd_cwnd += delta;
-  }
-  tp->snd_cwnd = min(tp->snd_cwnd, tp->snd_cwnd_clamp);
-}
-
 static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
   struct tcp_sock* tp = tcp_sk(sk);
   struct bictcp* ca = inet_csk_ca(sk);
@@ -368,7 +344,7 @@ static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
     }
   }
   bictcp_update(ca, tp->snd_cwnd, acked);
-  evil_cong_avoid_ai(tp, ca->cnt, acked);
+  tcp_cong_avoid_ai(tp, ca->cnt, acked);
 }
 
 static u32 bictcp_recalc_ssthresh(struct sock* sk) {
@@ -385,6 +361,9 @@ static u32 bictcp_recalc_ssthresh(struct sock* sk) {
   else {
     ca->last_max_cwnd = tp->snd_cwnd;
   }
+
+  // NOTE: Attempt to adjust rate
+  ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 10;
 
   ca->loss_cwnd = tp->snd_cwnd;
 
