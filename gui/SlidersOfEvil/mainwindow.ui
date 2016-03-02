@@ -57,7 +57,7 @@
             </size>
            </property>
            <property name="text">
-            <string>alpha</string>
+            <string>alpha/10</string>
            </property>
           </widget>
          </item>
@@ -89,13 +89,13 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>1</number>
+            <number>10</number>
            </property>
            <property name="sliderPosition">
-            <number>1</number>
+            <number>10</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -124,10 +124,10 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>10</number>
+            <number>20</number>
            </property>
            <property name="value">
-            <number>1</number>
+            <number>10</number>
            </property>
           </widget>
          </item>
