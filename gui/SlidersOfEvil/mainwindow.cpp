@@ -180,9 +180,9 @@ void MainWindow::updateGUI(const QString& str) {
 
 void MainWindow::update_graph() {
     // generate some data:
-    QVector<double> x(101), y(101); // initialize with entries 0..100
+    QVector<double> x(40), y(40); // initialize with entries 0..100
     tcp_grapher g(1000, .4, ui->alpha_value->value(), ui->beta_value->value());
-    for (int i=0; i<101; ++i) {
+    for (int i=0; i<40; ++i) {
       x[i] = i;
       y[i] = g.get_next();
     }
@@ -321,7 +321,7 @@ void MainWindow::on_slider_ssthresh_valueChanged(int value) {
 void MainWindow::on_slider_rto_min_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -331,7 +331,7 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after rto_min <-- include space
-      string::size_type end = route.find(" ", start + 8); 
+      string::size_type end = route.find(" ", start + 8);
       route.erase(start, end);
     }
     stringstream ss;
@@ -351,7 +351,7 @@ void MainWindow::on_slider_rto_min_valueChanged(int value) {
 void MainWindow::on_slider_mtu_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -361,7 +361,7 @@ void MainWindow::on_slider_mtu_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after mtu <-- include space
-      string::size_type end = route.find(" ", start + 4); 
+      string::size_type end = route.find(" ", start + 4);
       route.erase(start, end);
     }
     stringstream ss;
@@ -381,7 +381,7 @@ void MainWindow::on_slider_mtu_valueChanged(int value) {
 void MainWindow::on_slider_initcwnd_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -391,7 +391,7 @@ void MainWindow::on_slider_initcwnd_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after initcwnd <-- include space
-      string::size_type end = route.find(" ", start + 9); 
+      string::size_type end = route.find(" ", start + 9);
       route.erase(start, end);
     }
     stringstream ss;
@@ -411,7 +411,7 @@ void MainWindow::on_slider_initcwnd_valueChanged(int value) {
 void MainWindow::on_slider_initrwnd_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -421,7 +421,7 @@ void MainWindow::on_slider_initrwnd_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after initrwnd <-- include space
-      string::size_type end = route.find(" ", start + 9); 
+      string::size_type end = route.find(" ", start + 9);
       route.erase(start, end);
     }
     stringstream ss;
@@ -441,7 +441,7 @@ void MainWindow::on_slider_initrwnd_valueChanged(int value) {
 void MainWindow::on_slider_rtt_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -451,7 +451,7 @@ void MainWindow::on_slider_rtt_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after rtt <-- include space
-      string::size_type end = route.find(" ", start + 4); 
+      string::size_type end = route.find(" ", start + 4);
       route.erase(start, end);
     }
     stringstream ss;
@@ -471,7 +471,7 @@ void MainWindow::on_slider_rtt_valueChanged(int value) {
 void MainWindow::on_slider_rttvar_valueChanged(int value) {
   int status;
   vector<string> routes = split(exec("ip route"),'\n');
- 
+
   for (string & route : routes) {
     string::size_type lock_pos = route.find(" lock");
     if (lock_pos != string::npos) {
@@ -481,7 +481,7 @@ void MainWindow::on_slider_rttvar_valueChanged(int value) {
     string::size_type start = route.find(s);
     if (start != string::npos) {
       //end is first space after rttvar <-- include space
-      string::size_type end = route.find(" ", start + 7); 
+      string::size_type end = route.find(" ", start + 7);
       route.erase(start, end);
     }
     stringstream ss;
@@ -510,7 +510,7 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
       "echo -n 16 > /sys/module/tcp_evil/parameters/hystart_low_window && "
       "echo -n 2 > /sys/module/tcp_evil/parameters/hystart_ack_delta && "
       "echo -n 717 > /sys/module/tcp_evil/parameters/beta && "
-      "echo -n 1 > /sys/module/tcp_evil/parameters/alpha");
+      "echo -n 10 > /sys/module/tcp_evil/parameters/alpha");
   if (DEBUG && e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
   }
