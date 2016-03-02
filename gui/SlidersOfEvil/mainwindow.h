@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "paramwatcher.h"
 #include <QMainWindow>
 #include <QFileSystemWatcher>
 
@@ -62,7 +61,6 @@ private slots:
 private:
   Ui::MainWindow* ui;
   QFileSystemWatcher watcher;
-  ParamWatcher pw;
 };
 
 #endif // MAINWINDOW_H
