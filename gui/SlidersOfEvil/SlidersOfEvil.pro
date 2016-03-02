@@ -23,4 +23,3 @@ HEADERS  += mainwindow.h \
     tcp_grapher.h
 
 FORMS    += mainwindow.ui
-

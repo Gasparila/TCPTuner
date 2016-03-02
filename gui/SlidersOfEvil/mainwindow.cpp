@@ -181,7 +181,7 @@ void MainWindow::updateGUI(const QString& str) {
 void MainWindow::update_graph() {
     // generate some data:
     QVector<double> x(40), y(40); // initialize with entries 0..100
-    tcp_grapher g(1000, .4, ui->alpha_value->value(), ui->beta_value->value());
+    tcp_grapher g(1000, 0.4, ui->alpha_value->value(), ui->beta_value->value());
     for (int i=0; i<40; ++i) {
       x[i] = i;
       y[i] = g.get_next();
@@ -190,7 +190,7 @@ void MainWindow::update_graph() {
     ui->tcp_graph->addGraph();
     ui->tcp_graph->graph(0)->setData(x, y);
     // give the axes some labels:
-    ui->tcp_graph->xAxis->setLabel("time");
+    ui->tcp_graph->xAxis->setLabel("time (rtt)");
     ui->tcp_graph->yAxis->setLabel("cwnd");
     // set axes ranges, so we see all data:
     ui->tcp_graph->xAxis->setRange(0, x.size());

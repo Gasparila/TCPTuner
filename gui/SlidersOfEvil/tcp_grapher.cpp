@@ -19,13 +19,11 @@ int tcp_grapher::get_max_window() {
 }
 
 int tcp_grapher::get_next() {
-    cout << curr_window << " " << max_window << " " << beta << " " << w_max << endl;
     if (curr_window >= max_window) {
         curr_window *= beta;
         t = 0;
     } else {
         double K = cbrt(w_max*beta/C);
-        cout << " K is "<< K << endl;
         double delta = (t - K);
         curr_window = C * delta * delta * delta + w_max;
         t++;
