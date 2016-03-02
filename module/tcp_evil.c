@@ -278,6 +278,7 @@ static inline void bictcp_update(struct bictcp* ca, u32 cwnd, u32 acked) {
 
   /* c/rtt * (t-K)^3 */
   delta = (cube_rtt_scale * offs * offs * offs) >> (10 + 3 * BICTCP_HZ);
+  printk("[info] DELTA: %d\n", delta);
 
   if (t < ca->bic_K) {                                 /* below origin*/
     bic_target = ca->bic_origin_point - delta;
@@ -324,6 +325,7 @@ tcp_friendliness:
    * 2 packets ACKed, meaning cwnd grows at 1.5x per RTT.
    */
   ca->cnt = max(ca->cnt, 2U);
+  printk("[info] CA->CNT: %d\n", ca->cnt);
 }
 
 static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
@@ -345,6 +347,7 @@ static void bictcp_cong_avoid(struct sock* sk, u32 ack, u32 acked) {
   }
   bictcp_update(ca, tp->snd_cwnd, acked);
   tcp_cong_avoid_ai(tp, ca->cnt, acked);
+  printk("[info] SND_CWND: %d\n", tp->snd_cwnd);
 }
 
 static u32 bictcp_recalc_ssthresh(struct sock* sk) {
@@ -361,6 +364,9 @@ static u32 bictcp_recalc_ssthresh(struct sock* sk) {
   else {
     ca->last_max_cwnd = tp->snd_cwnd;
   }
+
+  // NOTE: Attempt to adjust rate
+  ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 10;
 
   ca->loss_cwnd = tp->snd_cwnd;
 
