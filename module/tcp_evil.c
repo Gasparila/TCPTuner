@@ -44,7 +44,7 @@
 #define HYSTART_DELAY_THRESH(x) clamp(x, HYSTART_DELAY_MIN, HYSTART_DELAY_MAX)
 
 static int fast_convergence __read_mostly = 1;
-static int alpha __read_mostly = 10;
+static int alpha __read_mostly = 512;    /* = 512 / 512 */
 static int beta __read_mostly = 717;     /* = 717/1024 (BICTCP_BETA_SCALE) */
 static int initial_ssthresh __read_mostly;
 static int bic_scale __read_mostly = 41;
@@ -363,7 +363,7 @@ static u32 bictcp_recalc_ssthresh(struct sock* sk) {
   }
 
   // NOTE: Attempt to adjust rate
-  ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 10;
+  ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 512;
 
   ca->loss_cwnd = tp->snd_cwnd;
 

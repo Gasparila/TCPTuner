@@ -254,7 +254,7 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
   e = system("echo -n 1 > /sys/module/tcp_evil/parameters/fast_convergence && "
              "echo -n 1 > /sys/module/tcp_evil/parameters/tcp_friendliness && "
              "echo -n 717 > /sys/module/tcp_evil/parameters/beta && "
-             "echo -n 10 > /sys/module/tcp_evil/parameters/alpha");
+             "echo -n 512 > /sys/module/tcp_evil/parameters/alpha");
   if (DEBUG && e != 0) {
     cout << "[ERROR] Couldn't set defaults." << endl;
   }

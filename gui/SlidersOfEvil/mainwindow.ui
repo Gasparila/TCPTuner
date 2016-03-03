@@ -80,7 +80,7 @@
             </size>
            </property>
            <property name="text">
-            <string>alpha/10</string>
+            <string>alpha/512</string>
            </property>
           </widget>
          </item>
@@ -112,13 +112,13 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>20</number>
+            <number>1024</number>
            </property>
            <property name="value">
-            <number>10</number>
+            <number>512</number>
            </property>
            <property name="sliderPosition">
-            <number>10</number>
+            <number>512</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -147,10 +147,10 @@
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>20</number>
+            <number>1024</number>
            </property>
            <property name="value">
-            <number>10</number>
+            <number>512</number>
            </property>
           </widget>
          </item>
@@ -851,7 +851,4 @@
    </hints>
   </connection>
  </connections>
- <buttongroups>
-  <buttongroup name="buttonGroup_hystart_detect"/>
- </buttongroups>
 </ui>

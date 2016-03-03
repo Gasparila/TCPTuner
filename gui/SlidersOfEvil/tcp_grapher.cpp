@@ -8,7 +8,7 @@ tcp_grapher::tcp_grapher(int max_window, double C, double alpha, double beta):
     t(0),
     max_window(max_window),
     C(C),
-    w_max(max_window * alpha/10.0),
+    w_max(max_window * alpha/512.0),
     beta(beta/1024),
     max_hit(0)
 {
