@@ -23,7 +23,7 @@ int tcp_grapher::get_next() {
     t = 0;
   }
   else {
-    double K = cbrt(w_max * beta / C);
+    double K = cbrt(w_max * (1-beta) / C);
     double delta = (t - K);
     curr_window = C * delta * delta * delta + w_max;
     t++;
