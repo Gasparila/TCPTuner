@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QMutex>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -120,6 +121,9 @@ void MainWindow::updateGUI(const QString& str) {
 }
 
 void MainWindow::update_graph() {
+  static QMutex mutex;
+  if (!mutex.tryLock())
+    return;
   // generate some data:
   QVector<double> x(40), y(40);   // initialize with entries 0..100
   tcp_grapher g(1000, 0.4, ui->alpha_value->value(), ui->beta_value->value());
@@ -139,6 +143,7 @@ void MainWindow::update_graph() {
   ui->tcp_graph->xAxis->setRange(0, x.size());
   ui->tcp_graph->yAxis->setRange(0, g.get_max_window());
   ui->tcp_graph->replot();
+  mutex.unlock();
 }
 
 void MainWindow::on_chk_fast_convergence_toggled(bool checked) {
