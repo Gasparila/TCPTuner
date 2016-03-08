@@ -51,7 +51,7 @@
      </spacer>
     </item>
     <item>
-     <widget class="QGroupBox" name="box_tcpevil_params">
+     <widget class="QGroupBox" name="box_tcptuner_params">
       <property name="title">
        <string>TCP TUNER PARAMETERS</string>
       </property>
