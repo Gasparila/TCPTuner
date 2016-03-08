@@ -474,7 +474,7 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
   .undo_cwnd      = bictcp_undo_cwnd,
   .pkts_acked     = bictcp_acked,
   .owner          = THIS_MODULE,
-  .name           = "evil",
+  .name           = "tuner",
 };
 
 static int __init cubictcp_register(void) {
@@ -520,5 +520,5 @@ module_exit(cubictcp_unregister);
 
 MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger");
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("EVIL TCP");
-MODULE_VERSION("0.9");
+MODULE_DESCRIPTION("TCP TUNER");
+MODULE_VERSION("0.1");

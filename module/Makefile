@@ -1,4 +1,4 @@
-obj-m += tcp_evil.o
+obj-m += tcp_tuner.o
 
 all:
 		make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
