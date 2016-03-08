@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>TCPvil Sliders of Evil</string>
+   <string>TCPTuner</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -51,9 +51,12 @@
      </spacer>
     </item>
     <item>
-     <widget class="QGroupBox" name="box_tcpevil_params">
+     <widget class="QGroupBox" name="box_tcptuner_params">
       <property name="title">
-       <string>TCP_EVIL PARAMETERS</string>
+       <string>TCP TUNER PARAMETERS</string>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>

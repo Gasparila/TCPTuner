@@ -1,13 +1,13 @@
-# TCPvil
-TCPvil is TCP congestion control kernel module and GUI packaged together. By loading our kernel module (which is essentially a clone of CUBIC), and running the GUI, users can adjust several parameters of the CUBIC congestion control algorithm.
+# TCPTuner
+TCPTuner is TCP congestion control kernel module and GUI packaged together. By loading our kernel module (which is essentially a clone of CUBIC), and running the GUI, users can adjust several parameters of the CUBIC congestion control algorithm.
 
 ## How to Build and Load the Kernel Module
 
 ```
 cd module/
 make
-sudo rmmod tcp_evil.ko
-sudo insmod tcp_evil.ko
+sudo rmmod tcp_tuner.ko
+sudo insmod tcp_tuner.ko
 sudo sysctl -w net.ipv4.tcp_congestion_control=evil
 ```
 
@@ -27,8 +27,8 @@ make
 sudo ./SlidersOfEvil
 ```
 
-## TCPvil's Parameters
-TCPvil exposes the parameters of TCP CUBIC to the user via the Sliders of Evil GUI. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
+## TCPTuner's Parameters
+TCPTuner exposes the parameters of TCP CUBIC to the user via the Sliders of Evil GUI. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
 
 Parameter        | Description                                                                 | Default
 :--------------: | :-------------------------------------------------------------------------- | :-----:
@@ -61,7 +61,7 @@ Before you can run MahiMahi, you must set ip_forward=1
 sudo sysctl -w net.ipv4.ip_forward=1
 ```
 
-Now, tcp_evil should be set as the congestion control algorithm.
+Now, tcp_tuner should be set as the congestion control algorithm.
 
 ### Single Flow, Tail-drop Buffer
 The first simulation shows throughput and delay of a single TCP flow on a 12Mbps uplink.
@@ -72,7 +72,7 @@ cd mahimahi/
 ```
 
 ### Two Flows Sharing Bottleneck
-The second simulation shows throughput graphs of each flow sharing a bottleneck link. This can be used to compare default cubic to tcp_evil.
+The second simulation shows throughput graphs of each flow sharing a bottleneck link. This can be used to compare default cubic to tcp_tuner.
 
 ```
 cd mahimahi/

@@ -362,7 +362,8 @@ static u32 bictcp_recalc_ssthresh(struct sock* sk) {
     ca->last_max_cwnd = tp->snd_cwnd;
   }
 
-  // NOTE: Attempt to adjust rate
+  // NOTE: Added for TCPTuner to allow adjustment of how fast TCP Cubic grows
+  // its congestion window.
   ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 512;
 
   ca->loss_cwnd = tp->snd_cwnd;
@@ -474,7 +475,7 @@ static struct tcp_congestion_ops cubictcp __read_mostly = {
   .undo_cwnd      = bictcp_undo_cwnd,
   .pkts_acked     = bictcp_acked,
   .owner          = THIS_MODULE,
-  .name           = "evil",
+  .name           = "tuner",
 };
 
 static int __init cubictcp_register(void) {
@@ -520,5 +521,5 @@ module_exit(cubictcp_unregister);
 
 MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger");
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("EVIL TCP");
-MODULE_VERSION("0.9");
+MODULE_DESCRIPTION("TCP TUNER");
+MODULE_VERSION("0.1");
