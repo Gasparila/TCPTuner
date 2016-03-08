@@ -362,7 +362,8 @@ static u32 bictcp_recalc_ssthresh(struct sock* sk) {
     ca->last_max_cwnd = tp->snd_cwnd;
   }
 
-  // NOTE: Attempt to adjust rate
+  // NOTE: Added for TCPTuner to allow adjustment of how fast TCP Cubic grows
+  // its congestion window.
   ca->last_max_cwnd = (ca->last_max_cwnd * alpha) / 512;
 
   ca->loss_cwnd = tp->snd_cwnd;
