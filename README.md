@@ -11,7 +11,7 @@ sudo insmod tcp_tuner.ko
 sudo sysctl -w net.ipv4.tcp_congestion_control=evil
 ```
 
-## Sliders of Evil (The GUI)
+## The TCPTuner GUI
 ### Dependencies
 
 ```
@@ -28,7 +28,7 @@ sudo ./SlidersOfEvil
 ```
 
 ## TCPTuner's Parameters
-TCPTuner exposes the parameters of TCP CUBIC to the user via the Sliders of Evil GUI. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
+TCPTuner exposes the parameters of TCP CUBIC to the user via the TCPTuner GUI. The parameters present in TCP CUBIC, along with their descriptions and default values are in the table below.
 
 Parameter        | Description                                                                 | Default
 :--------------: | :-------------------------------------------------------------------------- | :-----:
