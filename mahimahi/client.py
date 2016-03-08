@@ -6,6 +6,13 @@ import string
 import time
 import os
 import struct
+import thread
+
+def log_cwnd (f, s):
+    while True:
+        # Read CWND
+        f.write(str(struct.unpack("B"*7+"I"*21, s.getsockopt(socket.SOL_TCP, socket.TCP_INFO, 92))[25]) + '\n')
+        time.sleep(.2)
 
 SAVE_CWND = 1
 TCP_CONGESTION = 13
@@ -34,12 +41,7 @@ msg = ''.join(random.choice(string.ascii_letters) for _ in range(SIZE))
 # Open a log file to print TCP info
 if SAVE_CWND:
     f = open("cwnd_data.csv", 'w')
-    starttime = time.time()
+    thread.start_new_thread(log_cwnd, (f, s))
 
 while True:
-    if ((time.time()-starttime) >= 0.2 and SAVE_CWND):
-        starttime = time.time()
-        # Read CWND
-        f.write(str(struct.unpack("B"*7+"I"*21, s.getsockopt(socket.SOL_TCP, socket.TCP_INFO, 92))[25]) + '\n')
-
     s.send(msg)
