@@ -122,8 +122,9 @@ void MainWindow::updateGUI(const QString& str) {
 
 void MainWindow::update_graph() {
   static QMutex mutex;
-  if (!mutex.tryLock())
+  if (!mutex.tryLock()) {
     return;
+  }
   // generate some data:
   QVector<double> x(40), y(40);   // initialize with entries 0..100
   tcp_grapher g(1000, 0.4, ui->alpha_value->value(), ui->beta_value->value());
@@ -267,4 +268,11 @@ void MainWindow::on_btn_restoreDefaults_clicked() {
   }
   ui->slider_rto_min->setValue(0);
   ui->slider_initcwnd->setValue(0);
+}
+
+void MainWindow::on_actionAbout_TCPvil_triggered() {
+  QMessageBox msgBox;
+  msgBox.setText("TCPTuner: Congestion Control Your Way");
+  msgBox.setInformativeText("Version: 0.1.0");
+  msgBox.exec();
 }

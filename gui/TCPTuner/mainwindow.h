@@ -36,6 +36,8 @@ private slots:
 
   void updateGUI(const QString& str);
 
+  void on_actionAbout_TCPvil_triggered();
+
 private:
   Ui::MainWindow* ui;
   QFileSystemWatcher watcher;
