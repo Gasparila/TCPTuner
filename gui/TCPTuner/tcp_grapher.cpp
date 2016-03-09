@@ -4,7 +4,7 @@
 using namespace std;
 
 tcp_grapher::tcp_grapher(int max_window, double C, double alpha, double beta) :
-  curr_window(1),
+  curr_window(max_window),
   t(0),
   max_window(max_window),
   C(C),
@@ -25,7 +25,7 @@ int tcp_grapher::get_next() {
   else {
     double K = cbrt(w_max * (1-beta) / C);
     double delta = (t - K);
-    curr_window = C * delta * delta * delta + w_max;
+    curr_window = max(curr_window, C * delta * delta * delta + w_max);
     t++;
   }
   max_hit = max(curr_window, max_hit);
