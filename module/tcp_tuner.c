@@ -21,6 +21,11 @@
  *
  * Unless CUBIC is enabled and congestion window is large
  * this behaves the same as the original Reno.
+ *
+ * NOTE: This kernel module has been augmented with the module parameter
+ * "alpha" in order to interface with TCPTuner. TCPTuner was created as an
+ * experimental tool and is open source.
+ *
  */
 
 #include <linux/math64.h>
@@ -519,7 +524,7 @@ static void __exit cubictcp_unregister(void) {
 module_init(cubictcp_register);
 module_exit(cubictcp_unregister);
 
-MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger");
+MODULE_AUTHOR("Sangtae Ha, Stephen Hemminger, Luke Hsiao, Kevin Miller");
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("TCP TUNER");
 MODULE_VERSION("0.1");
