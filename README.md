@@ -8,7 +8,7 @@ cd module/
 make
 sudo rmmod tcp_tuner.ko
 sudo insmod tcp_tuner.ko
-sudo sysctl -w net.ipv4.tcp_congestion_control=evil
+sudo sysctl -w net.ipv4.tcp_congestion_control=tuner
 ```
 
 ## The TCPTuner GUI
@@ -21,10 +21,10 @@ sudo apt-get install qt5-qmake qt5-default
 ### To Build and Run
 
 ```
-cd gui/SlidersOfEvil/
+cd gui/TCPTuner/
 qmake
 make
-sudo ./SlidersOfEvil
+sudo ./TCPTuner
 ```
 
 ## TCPTuner's Parameters
