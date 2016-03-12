@@ -33,7 +33,7 @@ TCPTuner exposes the parameters of TCP CUBIC to the user via the TCPTuner GUI. T
 Parameter        | Description                                                                 | Default
 :--------------: | :-------------------------------------------------------------------------- | :-----:
 alpha            | Scales W_max, which adjusts the rate at which cwnd grows after a loss event | 512
-beta             | beta for multiplicative increase                                            | 717
+beta             | beta for multiplicative decrease                                            | 717
 fast_convergence | turn on/off fast convergence                                                | 1
 tcp_friendliness | turn on/off tcp friendliness                                                | 1
 
