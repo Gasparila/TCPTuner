@@ -38,7 +38,7 @@ fast_convergence | turn on/off fast convergence                                 
 tcp_friendliness | turn on/off tcp friendliness                                                | 1
 
 ### Additonal Parameters from ip-route
-The Sliders of Evil GUI also provides access to the following `ip route` parameters. The GUI will apply these `ip route` parameters to all of the routes in the routing table.
+The TCPTuner GUI also provides access to the following `ip route` parameters. The GUI will apply these `ip route` parameters to all of the routes in the routing table.
 
 Parameter | Description                                                                                                                 | Default
 :-------: | :-------------------------------------------------------------------------------------------------------------------------- | :------:
@@ -82,7 +82,7 @@ cd mahimahi/
 Now that the bottleneck link is created, we can run multiple clients within that shell.
 
 ```
-./start_client 5050 1 & <-- creates an evil client in a new process
+./start_client 5050 1 & <-- creates an tuner client in a new process
 ./start_client 5050 0 & <-- creates a cubic client in a new process
 ```
 
