@@ -1,5 +1,5 @@
 # TCPTuner
-TCPTuner is TCP congestion control kernel module and GUI packaged together. By loading our kernel module (which is essentially a clone of CUBIC), and running the GUI, users can adjust several parameters of the CUBIC congestion control algorithm.
+TCPTuner is TCP congestion control kernel module and GUI packaged together. By loading our kernel module (which is essentially a clone of CUBIC), and running the GUI, users can adjust several parameters of the CUBIC congestion control algorithm. See TCPTuner.pdf for more information about the background, implementation, and contributions of TCPTuner.
 
 ## How to Build and Load the Kernel Module
 
